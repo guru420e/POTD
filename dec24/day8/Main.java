@@ -2,21 +2,23 @@ import java.io.*;
 import java.util.*;
 
 public class Main {
-   public static int gcd(int a, int b){
-      if(b == 0)
+   public static int gcd(int a, int b) {
+      if (b == 0)
          return a;
-      return gcd(b,a%b);
-   } 
-   public static int getGcd(int[] arr){
+      return gcd(b, a % b);
+   }
+
+   public static int getGcd(int[] arr) {
       int n = arr.length;
 
-      int ans = gcd(arr[0],arr[1]);
-      for(int i = 2; i < n; ++i){
-         ans = gcd(ans,arr[i]);     
+      int ans = gcd(arr[0], arr[1]);
+      for (int i = 2; i < n; ++i) {
+         ans = gcd(ans, arr[i]);
       }
-      
+
       return ans;
    }
+
    public static void main(String[] args) throws IOException {
       boolean isLocal = System.getProperty("ONLINE_JUDGE") == null;
       FastScanner sc;
@@ -30,16 +32,15 @@ public class Main {
          out = new PrintWriter(System.out);
       }
 
-      int t = sc.nextInt();      
-      while(t-- > 0){
+      int t = sc.nextInt();
+      while (t-- > 0) {
          int n = sc.nextInt();
-         int[]arr = new int[n];
-         for(int i = 0; i < n; ++i)
+         int[] arr = new int[n];
+         for (int i = 0; i < n; ++i)
             arr[i] = Math.abs(sc.nextInt() - (i + 1));
-         
+
          out.println(getGcd(arr));
       }
-      
 
       out.close();
    }
